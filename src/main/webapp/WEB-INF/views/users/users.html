@@ -30,7 +30,8 @@
 
 </table>
 <br>
-<a href="users/new">New user</a>
-
+<form th:method="GET" th:action="@{/users/new}">
+    <input type="submit" value="Add new User"/>
+<form/>
 </body>
 </html>
