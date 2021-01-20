@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:\\thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<table border="1">
+    <tr bgcolor="#add8e6" style="color: darkred">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Profession</th>
+
+    </tr>
+    <tr>
+        <th th:text="${user.getId()}">value</th>
+        <th th:text="${user.getName()}">value</th>
+        <th th:text="${user.getSurname()}">value</th>
+        <th th:text="${user.getProfession()}">value</th>
+    </tr>
+</table>
+</body>
+</html>

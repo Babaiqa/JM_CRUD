@@ -1,11 +1,11 @@
 package MyCRUDApp.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -48,7 +48,7 @@ public class HiberConfig {
 
     @Bean
     public DataSource getDataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+            DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
         dataSource.setUrl(env.getRequiredProperty("db.url"));
         dataSource.setUsername(env.getRequiredProperty("db.username"));
@@ -72,11 +72,6 @@ public class HiberConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
-    }
-
-    @Bean
-    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-        return new PersistenceExceptionTranslationPostProcessor();
     }
 }
 
