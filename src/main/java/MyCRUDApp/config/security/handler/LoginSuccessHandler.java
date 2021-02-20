@@ -1,6 +1,7 @@
-package MyCRUDApp.config.handler;
+package MyCRUDApp.config.security.handler;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,20 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException, ServletException {
-        httpServletResponse.sendRedirect("/hello");
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+
+        boolean admin = false;
+
+        for (GrantedAuthority auth : authentication.getAuthorities()) {
+            if ("ROLE_ADMIN".equals(auth.getAuthority())) {
+                admin = true;
+            }
+        }
+
+        if (admin) {
+            httpServletResponse.sendRedirect("/admin");
+        } else {
+            httpServletResponse.sendRedirect("/user");
+        }
     }
 }

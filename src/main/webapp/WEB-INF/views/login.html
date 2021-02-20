@@ -8,10 +8,33 @@
 <body>
 <div>
     <form method="post" action="/login">
-        <input name="j_username"/>
-        <input name="j_password"/>
-        <input type="submit"/>
+        <label for name="username">E-mail</label>
+        <br>
+        <input name="username"/>
+        <br>
+
+        <label for name="password">Password</label>
+        <br>
+        <input name="password"/>
+        <br>
+
+        <input type="submit" value="LogIn"/>
     </form>
 </div>
+
+------------
+<br>
+<tr th:each="user : ${users}">
+    <th>
+        <p th:text="${user.getName()}"></p>
+        <p th:text="${user.getEmail()}"></p>
+        <p th:text="${user.getPassword()}"></p>
+        <p th:text="${user.getAuthorities()}"></p>
+        <br>
+        *************
+    </th>
+</tr>
+------------
+
 </body>
 </html>

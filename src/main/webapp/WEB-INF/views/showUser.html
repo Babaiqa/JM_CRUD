@@ -11,6 +11,10 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Profession</th>
+        <th>Username/Email</th>
+        <th>Authority</th>
+
+
 
     </tr>
     <tr>
@@ -18,7 +22,14 @@
         <th th:text="${user.getName()}">value</th>
         <th th:text="${user.getSurname()}">value</th>
         <th th:text="${user.getProfession()}">value</th>
+        <th th:text="${user.getEmail()}">value</th>
+        <th th:text="${user.getAuthorities().toString()}">value</th>
+
     </tr>
 </table>
+<br>
+<form th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout"/>
+</form>
 </body>
 </html>

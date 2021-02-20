@@ -38,7 +38,7 @@ public class HiberConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean
                 = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(getDataSource());
-        entityManagerFactoryBean.setPackagesToScan(new String[] { "MyCRUDApp" });
+        entityManagerFactoryBean.setPackagesToScan(new String[] { "MyCRUDApp.model" });
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

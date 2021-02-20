@@ -1,5 +1,6 @@
 package MyCRUDApp.config;
 
+import MyCRUDApp.config.security.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -8,7 +9,8 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-                HiberConfig.class
+                HiberConfig.class,
+                SecurityConfig.class
         };
     }
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Locale;
 
 @Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
@@ -25,9 +26,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUser(Long id) {
-        return (User) entityManager.createQuery("select u from User u where u.id= :id")
-                .setParameter("id", id)
+    public User getUserById(Long id) {
+        return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return (User) entityManager.createQuery("select u from User u where u.email= :email")
+                .setParameter("email", username.toLowerCase())
                 .getSingleResult();
     }
 
@@ -38,7 +44,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User saveUser(User user) {
+
         entityManager.persist(user);
+
         return user;
     }
 

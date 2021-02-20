@@ -3,6 +3,9 @@ package MyCRUDApp.service;
 import MyCRUDApp.dao.UserDAO;
 import MyCRUDApp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +28,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getUser(Long id) {
-        return userDAO.getUser(id);
+    public User getUserById(Long id) {
+        return userDAO.getUserById(id);
     }
 
     @Override
@@ -43,4 +46,11 @@ public class UserServiceImpl implements UserService{
     public User updateUser(User user) {
         return userDAO.updateUser(user);
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
+    }
+
+
 }
