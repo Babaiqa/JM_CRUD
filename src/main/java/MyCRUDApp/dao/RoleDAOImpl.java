@@ -3,8 +3,6 @@ package MyCRUDApp.dao;
 import MyCRUDApp.model.Role;
 import MyCRUDApp.model.User;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -21,8 +19,7 @@ public class RoleDAOImpl implements RoleDAO {
 
     @Override
     public Role getRoleById(int id) {
-
-        return entityManager.find(Role.class, id);
+            return entityManager.find(Role.class, id);
     }
 
     @Override

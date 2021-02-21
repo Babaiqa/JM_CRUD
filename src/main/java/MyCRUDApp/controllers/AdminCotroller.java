@@ -4,15 +4,12 @@ package MyCRUDApp.controllers;
 import MyCRUDApp.model.Role;
 import MyCRUDApp.model.User;
 import MyCRUDApp.service.RoleService;
-import MyCRUDApp.service.RoleServiceImpl;
 import MyCRUDApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,7 +50,8 @@ public class AdminCotroller {
         Set<Role> setOfRoles = new HashSet<>();
 
         for (String s : arr) {
-            setOfRoles.add(roleService.getRoleById(Integer.valueOf(s)));        }
+            setOfRoles.add(roleService.getRoleById(Integer.valueOf(s)));
+        }
 
         user.setRoles(setOfRoles);
         userService.saveUser(user);
@@ -65,12 +63,19 @@ public class AdminCotroller {
 
         model.addAttribute("user", userService.getUserById(id));
 
-
         return "editUser";
     }
 
     @PostMapping("/{id}/update")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") long id,
+                             @RequestParam(value = "selectRoles[]") String[] arr){
+        Set<Role> setOfRoles = new HashSet<>();
+
+        for (String s : arr) {
+            setOfRoles.add(roleService.getRoleById(Integer.valueOf(s)));
+        }
+
+        user.setRoles(setOfRoles);
         userService.updateUser(user);
         return "redirect:/admin";
     }

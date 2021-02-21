@@ -33,7 +33,7 @@ public class User implements UserDetails {
     @Column(name = "Password", nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH } )
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH } )
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "User_ID", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "Role_ID", referencedColumnName = "ID"))

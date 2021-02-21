@@ -24,17 +24,17 @@
 
 ------------
 <br>
+<table></table>
 <tr th:each="user : ${users}">
-    <th>
+    <td>
         <p th:text="${user.getName()}"></p>
         <p th:text="${user.getEmail()}"></p>
         <p th:text="${user.getPassword()}"></p>
         <p th:text="${user.getAuthorities()}"></p>
-        <br>
-        *************
-    </th>
+        ------------
+    </td>
 </tr>
-------------
+
 
 </body>
 </html>

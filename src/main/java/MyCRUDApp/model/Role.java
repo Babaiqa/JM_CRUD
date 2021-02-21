@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
-    @GeneratedValue
     @Column(name = "ID")
     private Integer id;
     @Column(name = "Role", nullable = false)
@@ -30,9 +29,9 @@ public class Role implements GrantedAuthority {
         return id;
     }
 
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getRoleName() {
         return roleName;
