@@ -6,6 +6,7 @@
     <title></title>
 </head>
 <body>
+
 <div>
     <form method="post" action="/login">
         <label for name="username">E-mail</label>
@@ -21,20 +22,6 @@
         <input type="submit" value="LogIn"/>
     </form>
 </div>
-
-------------
-<br>
-<table></table>
-<tr th:each="user : ${users}">
-    <td>
-        <p th:text="${user.getName()}"></p>
-        <p th:text="${user.getEmail()}"></p>
-        <p th:text="${user.getPassword()}"></p>
-        <p th:text="${user.getAuthorities()}"></p>
-        ------------
-    </td>
-</tr>
-
 
 </body>
 </html>
